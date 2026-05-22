@@ -27,19 +27,52 @@
       "address": "Noida sector 50"
     },
     {
-      
       "id": 2,
       "name": "Dominos",
       "contact": 3333,
       "address": "Gurugram sector 20"
-
     },
     {
-      
       "id": 3,
       "name": "KFC",
-      "contact":444 ,
+      "contact": 444,
       "address": "delhi sector 40"
+    },
+    {
+      "name": "RCB resturant",
+      "address": "Delhi ,rohini ",
+      "contact": "123431",
+      "id": 4
+    },
+    {
+      "name": "starbucks",
+      "address": "vizag",
+      "contact": "1111",
+      "id": 5
+    },
+    {
+      "name": "starbucks",
+      "address": "delhi saket",
+      "contact": "12345",
+      "id": 6
+    },
+    {
+      "name": "starbucks",
+      "address": "delhi saket",
+      "contact": "12345",
+      "id": 7
+    },
+    {
+      "name": "kvr resturant",
+      "address": "hyderabad hitech",
+      "contact": "23456",
+      "id": 8
+    },
+    {
+      "name": "muntaj resturant",
+      "address": "vizag mvp",
+      "contact": "765533",
+      "id": 9
     }
   ]
 }
