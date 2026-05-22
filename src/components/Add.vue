@@ -1,19 +1,13 @@
 <template>
   <Header />
-  <h1>Hello {{ name }}, Welcome on Home Page</h1>
+  <h1>Hello user, Welcome on Add Resturant Page</h1>
 </template>
 
 <script>
 import Header from './Header.vue'
 
 export default {
-  name: 'HomePage',
-
-  data() {
-    return {
-      name: ''
-    }
-  },
+  name: 'AddResturant',
 
   components: {
     Header
@@ -24,8 +18,6 @@ export default {
 
     if (!user) {
       this.$router.push({ name: "SignUp" });
-    } else {
-      this.name = JSON.parse(user).name;
     }
   }
 }
