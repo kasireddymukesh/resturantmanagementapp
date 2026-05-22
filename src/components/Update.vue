@@ -6,7 +6,7 @@
     <input type="text" name="address" placeholder="Enter address" v-model="resturant.address" />
     <input type="text" name="contact" placeholder="Enter contact" v-model = "resturant.contact" />
 
-    <button type="button" v-on:click="addResturant">Update Restaurant</button>
+    <button type="button" v-on:click="updateResturant">Update Restaurant</button>
   </form>
 </template>
 
@@ -28,6 +28,25 @@ export default {
         }
     }
   },
+  methods:{
+  async updateResturant(){
+
+    console.warn(this.resturant);
+
+    const result = await axios.put(
+      "http://localhost:3000/resturantlist/" + this.$route.params.id,
+      {
+        name: this.resturant.name,
+        address: this.resturant.address,
+        contact: this.resturant.contact,
+      }
+    );
+
+    if(result.status == 200){
+      this.$router.push({ name:'HomePage' });
+    }
+  }
+},
 
  async mounted() {
     let user = localStorage.getItem('user-info');
