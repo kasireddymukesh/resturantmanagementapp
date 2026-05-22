@@ -1,6 +1,6 @@
 <template>
   <img class="logo" src="../assets/restologo.jpg" />
-  
+
   <h1>Sign Up</h1>
 
   <div class="register">
@@ -34,7 +34,7 @@ export default {
 
   methods: {
     async signUp() {
-      let result = await axios.post("http://localhost:3000/user", {
+      let result = await axios.post("http://localhost:3000/users", {
         email: this.email,
         password: this.password,
         name: this.name,
@@ -43,36 +43,41 @@ export default {
       console.warn(result);
 
       if (result.status === 201) {
-        alert("Sign-up done");
-        localStorage.setItem("user-info",JSON.stringify(result.data))
+        localStorage.setItem("user-info", JSON.stringify(result.data));
+
+        this.$router.push({ name: "HomePage" });
       }
     },
   },
+  mounted(){
+     let user = localStorage.getItem('user-info');
+     if(user){
+        this.$router.push({ name: "SignUp" });
+     }
+  }
 };
 </script>
-
 <style>
-.logo {
-  width: 100px;
+.logo{
+  width:100px;
 }
-
-.register input {
-  width: 300px;
-  height: 40px;
-  padding-left: 20px;
-  display: block;
-  margin-bottom: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  border: 1px solid skyblue;
+.register input{
+  width : 300px;
+  height : 40px;
+  padding-left : 20px;
+  display : block;
+  margin-bottom : 30px;
+  margin-right:auto;
+  margin-left:auto;
 }
-
-.register button {
-  width: 320px;
-  height: 40px;
-  border: 1px solid skyblue;
-  background: skyblue;
-  color: #fff;
+.register button{
+  width : 320px;
+  height : 40px;
+  background-color:#236db7;
+  color:white;
+  border: 1px solid ##236db7;
+  border-radius : 5px;
   cursor: pointer;
+
 }
 </style>
