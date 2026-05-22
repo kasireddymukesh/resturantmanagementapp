@@ -9,7 +9,10 @@
       <th>Name</th>
       <th>Contact</th>
       <th>Address</th>
+      <th>Owner</th>
+      <th>Rating</th>
       <td>Actions</td>
+      
     </tr>
 
     <tr v-for="item in resturant" :key="item.id">
@@ -17,6 +20,9 @@
       <td>{{ item.name }}</td>
       <td>{{ item.contact }}</td>
       <td>{{ item.address }}</td>
+      <td>{{item.owner}}</td>
+      <td>{{item.rating}}</td>
+  
       <td>
       <router-link :to="'/update/' + item.id">Update</router-link>
       <button v-on:click="deleteResturant(item.id)">Delete</button>

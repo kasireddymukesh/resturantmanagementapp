@@ -24,43 +24,97 @@
       "name": "Burger King",
       "address": "Noida sector 10",
       "contact": 1111,
+      "owner": "mukesh",
+      "rating": "6",
       "id": 1
     },
     {
       "id": 2,
       "name": "Dominos",
       "contact": 3333,
-      "address": "Gurugram sector 20"
+      "address": "Gurugram sector 20",
+      "owner": "krish",
+      "rating": 4
     },
     {
-      "id": 3,
       "name": "KFC",
+      "address": "delhi sector 40",
       "contact": 444,
-      "address": "delhi sector 40"
+      "owner": " kumartej",
+      "rating": 4,
+      "id": 3
     },
     {
       "name": "RCB resturant",
       "address": "Delhi ,rohani",
       "contact": "123431",
+      "owner": "kisna",
+      "rating": 3.8,
       "id": 4
     },
     {
       "name": "starbucks",
       "address": "vizag",
       "contact": "1111",
+      "owner": " ",
+      "rating": 4.5,
       "id": 5
     },
     {
       "name": "coffecafe",
       "address": "delhi saket",
       "contact": "12345",
+      "owner": "sashi",
+      "rating": 2,
       "id": 6
     },
     {
       "name": "muntaj resturant",
       "address": "vizag mvp",
       "contact": "765533",
+      "owner": "kiran",
+      "rating": 5,
       "id": 9
+    },
+    {
+      "name": "dhaba",
+      "address": "gurugram",
+      "contact": "55555",
+      "owner": "laxman",
+      "rating": 5,
+      "id": 10
+    },
+    {
+      "name": "SRH resturant",
+      "address": "hyd,gachibowli ",
+      "contact": "13333",
+      "owner": "yase",
+      "rating": 4,
+      "id": 11
+    },
+    {
+      "name": "arbiannights",
+      "address": "vizag",
+      "contact": "2222222",
+      "owner": "shaif",
+      "rating": 3.3,
+      "id": 12
+    },
+    {
+      "name": "cookhouse",
+      "address": "abcd",
+      "contact": "45t6",
+      "owner": "",
+      "rating": 5,
+      "id": 13
+    },
+    {
+      "name": "Mi resturant",
+      "address": "mumbai navi",
+      "contact": "45678",
+      "rating": 3.5,
+      "owner": "sailu",
+      "id": 14
     }
   ]
 }

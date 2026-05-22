@@ -5,6 +5,9 @@
     <input type="text" name="name" placeholder="Enter Name" v-model= "resturant.name" />
     <input type="text" name="address" placeholder="Enter address" v-model="resturant.address" />
     <input type="text" name="contact" placeholder="Enter contact" v-model = "resturant.contact" />
+    <input type="text" name="owner" placeholder="Enter owner" v-model = "resturant.owner" />
+    <input type="text" name="rating" placeholder="Enter rating" v-model = "resturant.rating" />
+
 
     <button type="button" v-on:click="updateResturant">Update Restaurant</button>
   </form>
@@ -24,7 +27,9 @@ export default {
         resturant : {
             name :'',
             address:'',
-            contact:''
+            contact:'',
+            owner:'',
+            rating:''
         }
     }
   },
@@ -39,6 +44,9 @@ export default {
         name: this.resturant.name,
         address: this.resturant.address,
         contact: this.resturant.contact,
+        owner:this.resturant.owner,
+        rating:this.resturant.rating
+
       }
     );
 
