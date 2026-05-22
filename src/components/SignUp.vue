@@ -15,6 +15,9 @@
     />
 
     <button v-on:click="signUp">Sign Up</button>
+    <p>
+    <router-link to = "/login">Login</router-link>
+    </p>
   </div>
 </template>
 
@@ -58,26 +61,5 @@ export default {
 };
 </script>
 <style>
-.logo{
-  width:100px;
-}
-.register input{
-  width : 300px;
-  height : 40px;
-  padding-left : 20px;
-  display : block;
-  margin-bottom : 30px;
-  margin-right:auto;
-  margin-left:auto;
-}
-.register button{
-  width : 320px;
-  height : 40px;
-  background-color:#236db7;
-  color:white;
-  border: 1px solid ##236db7;
-  border-radius : 5px;
-  cursor: pointer;
 
-}
 </style>
