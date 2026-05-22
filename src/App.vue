@@ -29,7 +29,7 @@ body{
 .logo{
   width:100px;
 }
-.register input,.login input{
+.register input,.login input,.add input {
   width : 300px;
   height : 40px;
   padding-left : 20px;
@@ -38,7 +38,7 @@ body{
   margin-right:auto;
   margin-left:auto;
 }
-.register button{
+.register button,.login button,.add button{
   width : 320px;
   height : 40px;
   background-color:#236db7;
