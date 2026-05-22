@@ -18,5 +18,28 @@
       "name": "ak",
       "id": 3
     }
+  ],
+  "resturantlist": [
+    {
+      "id": 1,
+      "name": "Burger King",
+      "contact": 1111,
+      "address": "Noida sector 50"
+    },
+    {
+      
+      "id": 2,
+      "name": "Dominos",
+      "contact": 3333,
+      "address": "Gurugram sector 20"
+
+    },
+    {
+      
+      "id": 3,
+      "name": "KFC",
+      "contact":444 ,
+      "address": "delhi sector 40"
+    }
   ]
 }
