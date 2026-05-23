@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from './components/Login.vue'
 import Add from './components/Add.vue'
 import Update from'./components/Update.vue'
+import Profile from './components/Profile.vue'
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         name : 'UpdateResturant',
         component : Update,
         path:'/update/:id'
+    },
+    {
+        name:'Profile',
+        component:Profile,
+         path:'/profile'
     },
 ];
 

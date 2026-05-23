@@ -1,4 +1,3 @@
-
 <template>
   <img class="logo" src="../assets/restologo.jpg" />
 
@@ -15,14 +14,20 @@
     />
 
     <button v-on:click="login">Login</button>
+
+    <!-- ERROR MESSAGE -->
+    <p class="error">{{ errorMessage }}</p>
+
     <p>
-    <router-link to = "sign-up">Sign Up</router-link>
+      <router-link to="sign-up">Sign Up</router-link>
     </p>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
   name: "LoginPage",
 
@@ -30,27 +35,65 @@ export default {
     return {
       email: "",
       password: "",
+      errorMessage: ""
     };
   },
 
   methods: {
+
     async login() {
-      let result =  await axios.get(
-        `http://localhost:5000/users?email=${this.email}&password=${this.password}`
-      );
-       if (result.status === 200 && result.data.length > 0) {
-        localStorage.setItem("user-info", JSON.stringify(result.data[0]));
+
+      this.errorMessage = ""
+
+      try {
+
+        let result = await axios.get(
+          `http://localhost:5000/login?email=${this.email}&password=${this.password}`
+        );
+
+        localStorage.removeItem('user-info')
+
+        localStorage.setItem(
+          "user-info",
+          JSON.stringify(result.data)
+        );
 
         this.$router.push({ name: "HomePage" });
+
       }
-      console.warn(result);
+
+      catch(error) {
+
+        if(error.response && error.response.status === 404) {
+          this.errorMessage = "Email does not exist"
+        }
+
+        else if(error.response && error.response.status === 401) {
+          this.errorMessage = "Wrong password"
+        }
+
+        else {
+          this.errorMessage = "Server error"
+        }
+
+        console.log(error)
+      }
     },
   },
-   mounted(){
-     let user = localStorage.getItem('user-info');
-     if(user){
-        this.$router.push({ name: "HomePage" });
-     }
-   }
+
+  mounted() {
+    let user = localStorage.getItem('user-info');
+
+    if(user){
+      this.$router.push({ name: "HomePage" });
+    }
+  }
 };
 </script>
+
+<style>
+.error{
+  color:red;
+  margin-top:10px;
+}
+</style>
