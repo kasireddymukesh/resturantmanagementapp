@@ -2,20 +2,22 @@
   <Header />
   <h1>Hello user, Welcome on Add Restaurant Page</h1>
 
-  <form class = "add">
-    <input type="text" name="name" placeholder="Enter Name" v-model= "resturant.name" />
-    <input type="text" name="address" placeholder="Enter address" v-model="resturant.address" />
-    <input type="text" name="contact" placeholder="Enter contact" v-model = "resturant.contact" />
-    <input type="text" name="owner" placeholder="Enter owner name" v-model="resturant.owner"/>
-    <input type="text" name="rating" placeholder="Enter rating" v-model="resturant.rating"/>
+  <form class="add">
+    <input type="text" placeholder="Enter Name" v-model="restaurant.name" />
+    <input type="text" placeholder="Enter Address" v-model="restaurant.address" />
+    <input type="text" placeholder="Enter Contact" v-model="restaurant.contact" />
+    <input type="text" placeholder="Enter Owner" v-model="restaurant.owner" />
+    <input type="text" placeholder="Enter Rating" v-model="restaurant.rating" />
 
-    <button type="button" v-on:click="addResturant">Add New Restaurant</button>
+    <button type="button" @click="addRestaurant">
+      Add New Restaurant
+    </button>
   </form>
 </template>
 
 <script>
 import Header from './Header.vue'
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   name: 'AddRestaurant',
@@ -23,39 +25,47 @@ export default {
   components: {
     Header
   },
-  data(){
-    return {
-        resturant : {
-            name :'',
-            address:'',
-            contact:'',
-            owner:'',
-            rating:''
-        }
-    }
-  },
-  methods:{
-    async addResturant(){
-        console.warn(this.resturant)
-        const result = await axios.post("http://localhost:3000/resturantlist",{
-            name:this.resturant.name,
-            address:this.resturant.address,
-            contact:this.resturant.contact,
-            owner:this.resturant.owner,
-            rating:this.resturant.rating
 
-        });
-        if(result.status==201){
-            this.$router.push({name:'HomePage'});
-        }
-        console.warn("result",result)
+  data() {
+    return {
+      restaurant: {
+        name: '',
+        address: '',
+        contact: '',
+        owner: '',
+        rating: ''
+      }
     }
   },
+
+  methods: {
+    async addRestaurant() {
+      console.log(this.restaurant)
+
+      const result = await axios.post(
+        "http://localhost:5000/restaurants",
+        {
+          name: this.restaurant.name,
+          address: this.restaurant.address,
+          contact: this.restaurant.contact,
+          owner: this.restaurant.owner,
+          rating: this.restaurant.rating
+        }
+      )
+
+      console.log("result:", result)
+
+      if (result.status === 201) {
+        this.$router.push({ name: 'HomePage' })
+      }
+    }
+  },
+
   mounted() {
-    let user = localStorage.getItem('user-info');
+    let user = localStorage.getItem('user-info')
 
     if (!user) {
-      this.$router.push({ name: "SignUp" });
+      this.$router.push({ name: "SignUp" })
     }
   }
 }

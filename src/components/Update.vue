@@ -1,71 +1,79 @@
 <template>
   <Header />
-  <h1>Hello user, Welcome on Update resturant Page</h1>
-  <form class = "add">
-    <input type="text" name="name" placeholder="Enter Name" v-model= "resturant.name" />
-    <input type="text" name="address" placeholder="Enter address" v-model="resturant.address" />
-    <input type="text" name="contact" placeholder="Enter contact" v-model = "resturant.contact" />
-    <input type="text" name="owner" placeholder="Enter owner" v-model = "resturant.owner" />
-    <input type="text" name="rating" placeholder="Enter rating" v-model = "resturant.rating" />
+  <h1>Hello user, Welcome on Update restaurant Page</h1>
 
+  <form class="add">
+    <input type="text" placeholder="Enter Name" v-model="restaurant.name" />
+    <input type="text" placeholder="Enter Address" v-model="restaurant.address" />
+    <input type="text" placeholder="Enter Contact" v-model="restaurant.contact" />
+    <input type="text" placeholder="Enter Owner" v-model="restaurant.owner" />
+    <input type="text" placeholder="Enter Rating" v-model="restaurant.rating" />
 
-    <button type="button" v-on:click="updateResturant">Update Restaurant</button>
+    <button type="button" @click="updateRestaurant">
+      Update Restaurant
+    </button>
   </form>
 </template>
 
 <script>
 import Header from './Header.vue'
 import axios from 'axios'
+
 export default {
-  name: 'UpdateResturant',
+  name: 'UpdateRestaurant',
 
   components: {
     Header
   },
-  data(){
+
+  data() {
     return {
-        resturant : {
-            name :'',
-            address:'',
-            contact:'',
-            owner:'',
-            rating:''
-        }
+      restaurant: {
+        name: '',
+        address: '',
+        contact: '',
+        owner: '',
+        rating: ''
+      }
     }
   },
-  methods:{
-  async updateResturant(){
 
-    console.warn(this.resturant);
+  methods: {
+    async updateRestaurant() {
+      console.log(this.restaurant)
 
-    const result = await axios.put(
-      "http://localhost:3000/resturantlist/" + this.$route.params.id,
-      {
-        name: this.resturant.name,
-        address: this.resturant.address,
-        contact: this.resturant.contact,
-        owner:this.resturant.owner,
-        rating:this.resturant.rating
+      const result = await axios.put(
+        "http://localhost:5000/restaurants/" + this.$route.params.id,
+        {
+          name: this.restaurant.name,
+          address: this.restaurant.address,
+          contact: this.restaurant.contact,
+          owner: this.restaurant.owner,
+          rating: this.restaurant.rating
+        }
+      )
 
+      if (result.status === 200) {
+        this.$router.push({ name: 'HomePage' })
       }
-    );
-
-    if(result.status == 200){
-      this.$router.push({ name:'HomePage' });
     }
-  }
-},
+  },
 
- async mounted() {
-    let user = localStorage.getItem('user-info');
+  async mounted() {
+    let user = localStorage.getItem('user-info')
 
     if (!user) {
-      this.$router.push({ name: "SignUp" });
+      this.$router.push({ name: "SignUp" })
+      return
     }
-    const result = await axios.get('http://localhost:3000/resturantlist/'+ this.$route.params.id)
-    //console.warn(this.$route.params.id)
-    console.warn(result.data)
-    this.resturant=result.data
+
+    const result = await axios.get(
+      "http://localhost:5000/restaurants/" + this.$route.params.id
+    )
+
+    console.log(result.data)
+
+    this.restaurant = result.data
   }
 }
 </script>

@@ -11,11 +11,11 @@
       <th>Address</th>
       <th>Owner</th>
       <th>Rating</th>
-      <td>Actions</td>
+      <th>Actions</th>
       
     </tr>
 
-    <tr v-for="item in resturant" :key="item.id">
+    <tr v-for="item in restaurants" :key="item.id">
       <td>{{ item.id }}</td>
       <td>{{ item.name }}</td>
       <td>{{ item.contact }}</td>
@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       name: '',
-      resturant: []
+      restaurants: []
     }
   },
 
@@ -52,7 +52,7 @@ export default {
   async deleteResturant(id)
   {
     let result = await axios.delete(
-      'http://localhost:3000/resturantlist/' + id
+      'http://localhost:5000/restaurants/' + id
     );
 
     console.warn(result);
@@ -62,24 +62,23 @@ export default {
     }
   },
 
-  async loadData()
-  {
-    let user = localStorage.getItem('user-info');
+  async loadData() {
+  let user = localStorage.getItem('user-info')
 
-    if (!user) {
-      this.$router.push({ name: "SignUp" });
-    } else {
-      this.name = JSON.parse(user).name;
-    }
-
-    let result = await axios.get(
-      'http://localhost:3000/resturantlist'
-    );
-
-    console.warn(result);
-
-    this.resturant = result.data;
+  if (!user) {
+    this.$router.push({ name: "SignUp" })
+    return
   }
+
+  this.name = JSON.parse(user).name
+
+  let result = await axios.get('http://localhost:5000/restaurants')
+
+  console.log("DATA:", result.data)
+
+  // IMPORTANT FIX
+  this.restaurants = result.data
+}
 },
   async mounted() {
   this.loadData()
